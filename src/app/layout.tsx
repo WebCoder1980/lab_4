@@ -4,6 +4,8 @@ import TanStackQuery from '@/containers/TanStackQuery';
 import queryClient from '@/api/reactQueryClient';
 import { getGroupsApi } from '@/api/groupsApi';
 import type GroupInterface from '@/types/GroupInterface';
+import { getStudentsApi } from '@/api/studentsApi';
+import StudentsInterface from '@/types/StudentInterface';
 import Header from '@/components/layout/Header/Header';
 import Footer from '@/components/layout/Footer/Footer';
 import Main from '@/components/layout/Main/Main';
@@ -27,6 +29,15 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
       groups = await getGroupsApi();
       console.log('Groups', groups);
       return groups;
+    },
+  });
+
+    await queryClient.prefetchQuery({
+    queryKey: ['students'], 
+    queryFn: async () => {
+      students = await getStudentsApi();
+      console.log('Students', students);
+      return students;
     },
   });
 
