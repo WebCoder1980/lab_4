@@ -31,8 +31,8 @@ export const getStudentsDb = async (): Promise<StudentInterface[]> => {
 
 /**
  * Удаления студента
- * @param studentId
- * @returns
+ * @param studentId 
+ * @returns 
  */
 export const deleteStudentDb = async (studentId: number): Promise<number> => {
   const db = new sqlite3.Database(process.env.DB ?? './db/vki-web.db');
@@ -55,7 +55,7 @@ export const deleteStudentDb = async (studentId: number): Promise<number> => {
 /**
  * Добавление  рандомных студента
  * @param mount количество добавляемых записей - 10 по умолчанию
- * @returns
+ * @returns 
  */
 export const addRandomStudentsDb = async (amount: number = 10): Promise<FioInterface[]> => {
   const db = new sqlite3.Database(process.env.DB ?? './db/vki-web.db');
@@ -65,8 +65,8 @@ export const addRandomStudentsDb = async (amount: number = 10): Promise<FioInter
   for (let i = 0; i < amount; i++) {
     const fio = getRandomFio();
     fios.push(fio);
-    fiosInsert += `('${fio.firstName}', '${fio.lastName}', '${fio.middleName}', 1)`;
-    fiosInsert += `${i === amount - 1 ? ';' : ','}`;
+    fiosInsert+= `('${fio.firstName}', '${fio.lastName}', '${fio.middleName}', 1)`;
+    fiosInsert+= `${i === amount - 1 ? ';' : ','}`;
   }
 
   await new Promise((resolve, reject) => {

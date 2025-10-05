@@ -5,6 +5,7 @@ import {
 } from '@tanstack/react-query';
 import { deleteStudentApi, getStudentsApi } from '@/api/studentsApi';
 import type StudentInterface from '@/types/StudentInterface';
+import isServer from '@/utils/isServer';
 
 interface StudentsHookInterface {
   students: StudentInterface[];
@@ -31,7 +32,7 @@ const useStudents = (): StudentsHookInterface => {
       await queryClient.cancelQueries({ queryKey: ['students'] });
       // получаем данные из TanStackQuery
       const previousStudents = queryClient.getQueryData<StudentInterface[]>(['students']);
-      let updatedStudents = [...(previousStudents ?? [])];
+      let updatedStudents = [...(previousStudents ?? [])] ;
 
       if (!updatedStudents) return;
 
