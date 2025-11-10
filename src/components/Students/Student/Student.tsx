@@ -1,22 +1,22 @@
-import type StudentInterface from '@/types/StudentInterface';
-import styles from './Student.module.scss';
+import StudentInterface from '@/types/StudentInterface';
 
-interface Props {
+interface StudentProps {
   student: StudentInterface;
-  onDelete: (id: number) => void;
 }
 
-const Student = ({ student, onDelete }: Props): React.ReactElement => {
-  const onDeleteHandler = (): void => {
-    onDelete(student.id);
-  };
-
-  return (
-    <div className={`${styles.Student} ${student.isDeleted ? styles['--isDeleted'] : '' } `}>
-      {`${student.id} - ${student.lastName} ${student.firstName} ${student.middleName}`}
-      <button onClick={onDeleteHandler}>Удалить</button>
-    </div>
-  );
+const StudentDetails = ({ student }: StudentProps) => {
+    return (
+        <div>
+            <h2>Студент</h2>
+            <ul>
+                <li><strong>Id:</strong> {student.id}</li>
+                <li><strong>Фамилия:</strong> {student.lastName}</li>
+                <li><strong>Имя:</strong> {student.firstName}</li>
+                <li><strong>Отчество:</strong> {student.middleName}</li>
+                <li><strong>Группа Id:</strong> {student.groupId}</li>
+            </ul>
+        </div>
+    );
 };
 
-export default Student;
+export default StudentDetails;

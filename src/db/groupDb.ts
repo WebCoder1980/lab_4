@@ -1,34 +1,31 @@
 import sqlite3 from 'sqlite3';
-
-import type GroupInterface from '@/types/GroupInterface';
+import { Group } from './Entity/Group.entity';
+import AppDataSource from './AppDataSource';
+import type GroupInterface from '../types/GroupInterface';
 
 sqlite3.verbose();
+const db = new sqlite3.Database('./db/vki-web.db');
 
+const groupRepository = AppDataSource.getRepository(Group);
+
+/**
+ * Получение групп
+ * @returns  Promise<GroupInterface[]>
+ */
 export const getGroupsDb = async (): Promise<GroupInterface[]> => {
-  const db = new sqlite3.Database(process.env.DB ?? './db/vki-web.db');
+  return await groupRepository.find();
+};
 
-  const groups = await new Promise((resolve, reject) => {
-    const sql = 'SELECT * FROM class';
-    db.all(sql, [], (err, rows) => {
-      if (err) {
-        reject(err);
-        db.close();
-        return;
-      }
-      resolve(rows);
-      db.close();
-    });
+/**
+ * Добавление группы
+ * @returns  Promise<GroupInterface>
+ */
+export const addGroupsDb = async (groupFields: Omit<GroupInterface, 'id'>): Promise<GroupInterface> => {
+  const group = new Group();
+  const newGroup = await groupRepository.save({
+    ...group,
+    ...groupFields,
   });
-
-  // test data
-  // const groups: GroupInterface[] = [
-  //   {
-  //     name: '2207 д2',
-  //   },
-  //   {
-  //     name: '2207 д2',
-  //   },
-  // ];
 
   return groups as GroupInterface[];
 };

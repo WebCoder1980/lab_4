@@ -9,11 +9,11 @@ const Groups = (): React.ReactElement => {
 
   return (
     <div className={styles.Groups}>
-      {groups.map((group: GroupInterface) => (
-        <h2 key={group.id}>
-          {group.name}
-        </h2>
-      ))}
+        {groups.map((group: GroupInterface) => (
+            <h2 key={group.id}>
+                {group.name}
+            </h2>
+        ))}
     </div>
   );
 };

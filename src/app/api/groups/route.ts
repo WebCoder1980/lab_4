@@ -1,11 +1,23 @@
+import { NextResponse } from 'next/server';
 import { getGroupsDb } from '@/db/groupDb';
 
-export async function GET(): Promise<Response> {
-  const groups = await getGroupsDb();
-
-  return new Response(JSON.stringify(groups), {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-};
+export async function GET() {
+  try 
+  {
+    const groups = await getGroupsDb();
+    return NextResponse.json(groups, { status: 200 });
+  }
+  catch (error)
+  {
+    console.error('Ошибка в API /groups:', error);
+    
+    return NextResponse.json(
+      {
+        error: 'Ошибка на стороне сервера'
+      },
+      {
+        status: 500
+      }
+    );
+  }
+}

@@ -1,11 +1,11 @@
-import { addRandomStudentsDb } from '@/db/studentDb';
+import { getStudentsDb, addStudentDb } from '@/db/studentDb';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(): Promise<Response> {
-  const students = await addRandomStudentsDb();
+export async function POST(req: NextRequest): Promise<NextResponse> 
+{
+  const student = await req.json(); 
+  const newStudent = await addStudentDb(student);
 
-  return new Response(JSON.stringify(students), {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-};
+  console.log(newStudent);
+  return NextResponse.json(newStudent); 
+}
