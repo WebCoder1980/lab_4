@@ -1,4 +1,5 @@
 import StudentInterface from '@/types/StudentInterface';
+import Link from 'next/link';
 
 interface StudentProps {
   student: StudentInterface;
@@ -7,6 +8,7 @@ interface StudentProps {
 const StudentDetails = ({ student }: StudentProps) => {
     return (
         <div>
+            <Link href={'/students'} style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bold' }}>Вернуться обратно</Link>
             <h2>Студент</h2>
             <ul>
                 <li><strong>Id:</strong> {student.id}</li>
