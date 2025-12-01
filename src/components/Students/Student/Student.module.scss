@@ -16,3 +16,14 @@
     transition: opacity 0.5s ease-in-out, display 0.5s ease-in-out;
   }
 }
+
+.StyledButton {
+  background-color: var(--background2);
+  color: var(--background);
+  padding: 10px;
+  border-radius: 5px;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+}

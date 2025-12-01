@@ -18,3 +18,14 @@ $width: 400px;
     width: $width;
   }
 }
+
+.StyledButton {
+  background-color: var(--background2);
+  color: var(--background);
+  padding: 10px;
+  border-radius: 5px;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+}

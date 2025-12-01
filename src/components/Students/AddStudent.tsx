@@ -51,7 +51,7 @@ return (
             ))}
         </select>
 
-        <input type="submit" value="Добавить" />
+        <input type="submit" value="Добавить" className={styles.StyledButton}/>
       </form>
 
     </div>

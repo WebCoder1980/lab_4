@@ -8,6 +8,7 @@ import StudentInterface from '@/types/StudentsInterface';
 import Student from './Student/StudentItemList';
 import AddStudent from './AddStudent';
 import { getStudentsApi } from "../../api/studentsApi";
+import styles from './Students.module.scss';
 
 const Students = () => {
   const [showAddForm, setShowAddForm] = useState(false);
@@ -49,8 +50,8 @@ const Students = () => {
     <div>
       <h1>Список студентов</h1>
 
-      <button onClick={() => setShowAddForm(!showAddForm)}>
-        {showAddForm ? 'Отмена добавления студента' : 'Добавить  студента'}
+      <button onClick={() => setShowAddForm(!showAddForm)} className={styles.StyledButton}>
+        {showAddForm ? 'Отмена добавления студента' : 'Добавить студента'}
       </button>
 
       {showAddForm && (

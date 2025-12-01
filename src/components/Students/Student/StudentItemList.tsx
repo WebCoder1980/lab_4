@@ -22,7 +22,7 @@ const Student = ({ student, onDelete }: Props): React.ReactElement => {
           {student.id} - '{student.lastName}' '{student.firstName}' '{student.middleName}'
         </div>
       </Link>
-      <button onClick={onDeleteHandler}>Удалить</button>
+      <button onClick={onDeleteHandler} className={styles.StyledButton}>Удалить</button>
     </div>
   );
 };

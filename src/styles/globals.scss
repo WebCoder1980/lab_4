@@ -4,9 +4,13 @@
   --color: #272727;
   --color2: #FFF;
   --color3: #F00;
-  --background: #FFF;
-  --background2: #E1E1E1;
-  --background3: #434343;  
+  --background: #f7f8fa;
+  --background2: #2F2FA2;
+  --background3: #434343;
+}
+
+input, select {
+  padding: 10px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -53,10 +57,26 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'), local('Roboto'),
+  url('/fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'), local('Roboto'),
+  url('/fonts/Roboto-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 
 body {
   margin: 0;
-  font-family: PTSans;
+  font-family: Roboto;
   color: var(--color);
   background-color: var(--background);
   font-size: 18px;
@@ -71,49 +91,3 @@ body {
   color: var(--item-color);
   font-weight: 500;
 }
-
-h1 {
-  @include commons;
-  font-size: 42px;
-  font-weight: bold;
-  color: var(--current-color);
-
-  // @media #{main.$mob} {
-  //   font-size: main.vwMax(24px);
-  // }
-}
-
-h2 {
-  @include commons;
-  font-size: 32px;
-  font-weight: bold;
-
-  // @media #{main.$mob} {
-  //   font-size: main.vwMax(20px);
-  // }
-}
-
-h3 {
-  @include commons;
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--link-color);
-
-  // @media #{main.$mob} {
-  //   font-size: main.vwMax(18px);
-  // }
-}
-
-
-h4 {
-  @include commons;
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--link-color);
-
-  // @media #{main.$mob} {
-  //   font-size: main.vwMax(18px);
-  // }
-}
-
-
